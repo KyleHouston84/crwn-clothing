@@ -1,6 +1,8 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import Header from './components/header/header.component';
 import HomePage from './pages/homepage/homepage.component';
@@ -35,6 +37,7 @@ class App extends React.Component {
           });
         });
 
+        console.log(this.state)
       }
       
       this.setState({ currentUser: userAuth });
@@ -54,6 +57,7 @@ class App extends React.Component {
           <Route path='/shop' element={ <ShopPage /> } />
           <Route path='/signin' element={ <SignInAndSignUp /> } />
         </Routes>
+        <ToastContainer />
       </div>
     );
   }
