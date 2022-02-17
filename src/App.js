@@ -28,7 +28,6 @@ class App extends React.Component {
 
         // Grab the user data and add it to the state
         userRef.onSnapshot(snapShot => {
-          console.log("🚀 ~ file: App.js ~ line 28 ~ App ~ componentDidMount ~ snapShot", snapShot.data())
           this.setState({
             currentUser: {
               id: snapShot.id,
@@ -36,8 +35,6 @@ class App extends React.Component {
             }
           });
         });
-
-        console.log(this.state)
       }
       
       this.setState({ currentUser: userAuth });

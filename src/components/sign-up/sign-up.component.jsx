@@ -26,15 +26,20 @@ class SignUp extends React.Component {
 
     const { displayName, email, password, confirmPassword } = this.state;
 
+    // Check if passwords match
     if (password !== confirmPassword) {
       toast.error(`Passwords don't match!`);
       return;
     }
 
+    // try to submit user
     try {
+      // create the user
       const { user } = await auth.createUserWithEmailAndPassword(email, password);
 
+      // add the user to the firestore
       await createUserProfileDocument(user, { displayName });
+      toast.success(`User ${this.state.displayName} created and logged in`);
       this.setState({
         displayName: '',
         email: '',

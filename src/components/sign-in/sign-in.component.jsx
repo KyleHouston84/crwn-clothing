@@ -1,4 +1,6 @@
 import React from "react";
+import { auth } from "../../firebase/firebase.utils";
+import { toast } from "react-toastify";
 import FormInput from "../form-input/form-input.component";
 import CustomButton from "../custom-button/custom-button.component";
 
@@ -22,10 +24,20 @@ class SignIn extends React.Component {
     this.setState({ [name]: value });
   }
 
-  handleSubmit = event => {
+  handleSubmit = async event => {
     event.preventDefault();
 
-    this.setState({email: '', password: ''});
+    const { email, password } = this.state;
+
+    try {
+      const { user } = await auth.signInWithEmailAndPassword(email, password);
+      console.log("🚀 ~ file: sign-in.component.jsx ~ line 34 ~ SignIn ~ user", user)
+      this.setState({email: '', password: ''});
+    } catch (error) {
+      console.error(error);
+      toast.error('Incorrect email and/or password');
+    }
+
   }
 
   render() {
