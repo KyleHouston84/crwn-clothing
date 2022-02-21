@@ -11,6 +11,7 @@ import PrivateRoute from './components/private-route/private-route.component';
 import HomePage from './pages/homepage/homepage.component';
 import ShopPage from './pages/shop/shop.component';
 import SignInAndSignUp from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
+import CheckoutPage from './pages/checkout/checkout.component';
 
 import './App.css';
 import SignIn from './components/sign-in/sign-in.component';
@@ -55,6 +56,7 @@ class App extends React.Component {
           <Route path='/signin' element={ <PrivateRoute /> }>
             <Route path='/signin' element={ <SignInAndSignUp /> } />
           </Route>
+          <Route path='/checkout' element={ <CheckoutPage /> } />
         </Routes>
         <ToastContainer />
       </div>
