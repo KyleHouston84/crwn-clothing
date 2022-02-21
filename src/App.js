@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route, Redirect} from 'react-router-dom';
+import { Routes, Route} from 'react-router-dom';
 import { connect } from 'react-redux';
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 import { setCurrentUser } from './redux/user/user.actions';
