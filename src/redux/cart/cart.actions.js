@@ -13,3 +13,8 @@ export const removeItem = item => ({
   type: CartActionTypes.REMOVE_ITEM,
   payload: item
 })
+
+export const decreaseQty = item => ({
+  type: CartActionTypes.DECREASE_QTY,
+  payload: item
+})

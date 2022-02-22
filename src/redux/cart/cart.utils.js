@@ -4,10 +4,22 @@ export const addItemToCart = (cartItems, cartItemToAdd) => {
   if (existingCartItems) {
     return cartItems.map(cartItem => 
       cartItem.id === cartItemToAdd.id 
-        ? { ...cartItem, quantity: cartItem.quantity + 1}
+        ? { ...cartItem, quantity: cartItem.quantity + 1 }
         : cartItem
     );
   }
 
   return [...cartItems, {...cartItemToAdd, quantity: 1}];
+}
+
+export const decreaseQty = (cartItems, cartItemToDecrement) => {
+  if (cartItemToDecrement.quantity > 1) {    
+    return cartItems.map(cartItem => 
+      cartItem.id === cartItemToDecrement.id 
+        ? { ...cartItem, quantity: cartItem.quantity - 1 } 
+        : cartItem
+    );
+  } else {
+    return cartItems;
+  }
 }
