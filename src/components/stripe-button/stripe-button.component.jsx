@@ -1,14 +1,21 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import StripeCheckout from 'react-stripe-checkout';
+import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
+import { clearCart } from '../../redux/cart/cart.actions';
 
-const StripeCheckoutButton = ({ price }) => {
+const StripeCheckoutButton = ({ price, dispatch }) => {
   const priceForStripe = price * 100;
   const publishableKey = 'pk_test_bWV4eYuqE5YuZTt41qqkp1pk';
+
+  const navigate = useNavigate();
 
   const onToken = token => {
     console.log(token);
     toast.success('Payment Successful!');
+    dispatch(clearCart());
+    navigate('/');
   }
   
   return (
@@ -26,4 +33,4 @@ const StripeCheckoutButton = ({ price }) => {
   );
 }
 
-export default StripeCheckoutButton;
+export default connect()(StripeCheckoutButton);
