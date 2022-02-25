@@ -10,13 +10,12 @@ import './collection.styles.scss';
 
 const CollectionPage = ({ collections }) => {
   const param = useParams();
-  const routeCollection = collections[param.collectionId];
+  const routeCollection = collections ? collections[param.collectionId] : null;
   const {title, items} = routeCollection;
-
   
   return (
     <div className="collection-page">
-      <h2 className="title">{title}</h2>
+      <h2 className="title" >{title.toUpperCase()}</h2>
       <div className="items">
         {
           items.map(item => (
