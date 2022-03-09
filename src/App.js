@@ -12,7 +12,8 @@ import HomePage from './pages/homepage/homepage.component';
 import ShopPage from './pages/shop/shop.component';
 import SignInAndSignUp from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
 import CheckoutPage from './pages/checkout/checkout.component';
-import CollectionPage from './pages/collection/collection.component';
+// import CollectionPage from './pages/collection/collection.component';
+import CollectionPageContainer from './pages/collection/collection.container';
 
 import './App.css';
 import { selectCurrentUser } from './redux/user/user.selector';
@@ -53,7 +54,7 @@ class App extends React.Component {
         <Routes>
           <Route path='/' element={ <HomePage /> }/>
           <Route path='/shop' element={ <ShopPage /> } />
-          <Route path='/shop/:collectionId' element={ <CollectionPage /> } />
+          <Route path='/shop/:collectionId' element={ <CollectionPageContainer /> } />
           <Route path='/signin' element={ <PrivateRoute /> }>
             <Route path='/signin' element={ <SignInAndSignUp /> } />
           </Route>
